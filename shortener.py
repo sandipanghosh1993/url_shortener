@@ -26,7 +26,7 @@ def __handleFile(fileName):
 	try:
 		with open(fileName, 'r') as file:
 			lines = file.readlines()
-			wfile = open('short-'+argumentList[0], 'w')
+			wfile = open('short-'+fileName, 'w')
 			for url in lines:
 				wfile.writelines(shorten(url.strip('\n')))
 				wfile.writelines('\n')
