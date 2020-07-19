@@ -1,6 +1,7 @@
 import random
 import string
 import sys
+import os
 
 urlDict = {}
 
@@ -30,18 +31,22 @@ def original(short_url):
 	except KeyError as e:
 		return None
 
-def __handleFile(fileName):
+def __handleFile(inputFile):
+	script_dir = os.path.dirname(__file__)
+	abs_file_path = os.path.join(script_dir, inputFile)
 	try:
-		with open(fileName, 'r') as file:
+		with open(abs_file_path, 'r') as file:
 			lines = file.readlines()
-			wfile = open('short-'+fileName, 'w')
+			path, fileName = os.path.split(inputFile)
+			newFile = os.path.join(path, 'short-'+fileName)
+			wfile = open(newFile, 'w')
 			for url in lines:
 				wfile.writelines(shorten(url.strip('\n')))
 				wfile.writelines('\n')
 			wfile.close()
-			print('Short URLs are saved in short-'+fileName)
+			print('Short URLs are saved in '+newFile)
 	except OSError as e:
-		print(shorten(fileName))
+		print(shorten(inputFile))
 
 if __name__ == '__main__':
 	argumentList = sys.argv
