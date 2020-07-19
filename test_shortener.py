@@ -19,11 +19,14 @@ class TestShortener(unittest.TestCase):
 		self.assertFalse(shortUrl1 == shortUrl3, 'Should return different shortened urls for different long urls')
 		self.assertIsNone(shortener.shorten(''), 'Should return None if empty string given')
 		self.assertIsNone(shortener.shorten(' '), 'Should return None if white space given')
+		self.assertIsNone(shortener.shorten(None), 'Should return None if None given as input')
+
 
 	def test_original(self):
 		original_url = shortener.original(shortener.shorten(self.long_url1))
 		self.assertTrue(original_url == self.long_url1, 'Should return original url')
 		self.assertIsNone(shortener.original(self.long_url2), 'Should return None if url not found')
+		self.assertIsNone(shortener.original(None), 'Should return None if None given as input')
 
 if __name__ == '__main__':
 	unittest.main()

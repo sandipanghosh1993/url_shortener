@@ -8,6 +8,9 @@ def __genRandomShortUrl():
 	return ''.join(random.SystemRandom().choices(string.ascii_uppercase + string.ascii_lowercase + string.digits, k=6))
 
 def shorten(long_url):
+	if long_url == None:
+		return None
+
 	long_url = long_url.strip()
 
 	if len(long_url) == 0:
@@ -36,7 +39,7 @@ def __handleFile(fileName):
 				wfile.writelines(shorten(url.strip('\n')))
 				wfile.writelines('\n')
 			wfile.close()
-			print('Short URL(s) are saved in short-'+fileName)
+			print('Short URLs are saved in short-'+fileName)
 	except OSError as e:
 		print(shorten(fileName))
 
