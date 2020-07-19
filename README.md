@@ -2,8 +2,9 @@
 ## About
 A URL shortener library (e.g. bitly). Given a long URL, the program returns a shortened URL
 ## Usage
-Should be python 3.0 or above version installed
- 
+Should be installed python 3.0 or above version
+
+As a module 
 ```
 import shortener
 

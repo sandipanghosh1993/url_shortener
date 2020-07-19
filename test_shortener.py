@@ -14,9 +14,11 @@ class TestShortener(unittest.TestCase):
 		self.assertEqual(len(shortener.shorten(self.long_url1)), 6, 'Should be 6 characters long')
 		shortUrl1 = shortener.shorten(self.long_url1)
 		shortUrl2 = shortener.shorten(self.long_url1)
-		self.assertFalse(shortUrl1 == shortUrl2, 'Should return different shortened urls for successive calls using same url')
+		self.assertFalse(shortUrl1 == shortUrl2, 'Should return different shortened urls for successive calls using same long url')
 		shortUrl3 = shortener.shorten(self.long_url2)
 		self.assertFalse(shortUrl1 == shortUrl3, 'Should return different shortened urls for different long urls')
+		self.assertIsNone(shortener.shorten(''), 'Should return None if empty string given')
+		self.assertIsNone(shortener.shorten(' '), 'Should return None if white space given')
 
 	def test_original(self):
 		original_url = shortener.original(shortener.shorten(self.long_url1))
