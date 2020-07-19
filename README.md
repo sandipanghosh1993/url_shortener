@@ -21,6 +21,6 @@ Long URLs input from console
 ```
 Input from a file of new line separated long URLs
 ```
->>python shortener.py long_urls.txt
+>>python shortener.py 'C:\MyFolder\long_urls.txt'
 
 ```
